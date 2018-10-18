@@ -4,15 +4,33 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
 
+import javax.swing.JApplet;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class DrawCircleApplet 
+public class DrawCircleApplet  extends JApplet
 {
 	
 	public static void main(String[] args) 
 	{
 		
+		JPanel controlPanel = new JPanel();
+		
+		controlPanel.add(xCenter);
+		controlPanel.add(yCenter);
+		controlPanel.add(radius);
+		
+		JLabel xLabel = new JLabel("xCenter = ");
+		JLabel yLabel = new JLabel("yCenter = ");
+		JLabel radius = new JLabel("radius = ");
+		
+		JFrame controlFrame = new JFrame();
+		
+		controlFrame.add(controlPanel);
+		controlFrame.pack();
 		
 		
 	}
@@ -36,8 +54,6 @@ public class DrawCircleApplet
 				
 			}
 			
-			
-			
 		}
 		
 		ActionListener listener = new DrawButtonListener();
@@ -50,13 +66,14 @@ public class DrawCircleApplet
 		
 		super.paint(g);
 		Graphics2D g2 = (Graphics2D)g;
+		g2.draw(circle);
 		
 	}
 	
 	Ellipse2D circle;
 	
-	final JTextField xCenter = new JTextField();
-	final JTextField yCenter = new JTextField();
-	final JTextField radius = new JTextField();
+	final static JTextField xCenter = new JTextField();
+	final static JTextField yCenter = new JTextField();
+	final static JTextField radius = new JTextField();
 	
 }
